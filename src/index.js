@@ -5,7 +5,17 @@ host.playground`);
 }
 
 window.addEventListener("message", ({ data, origin }) => {
-    if (data.type === "message-to-parent") console.log("parent received", { data, origin });
+    if (data.type === "message-to-parent") {
+        console.log("parent received", { data, origin });
+        const { width, height } = data.args;
+
+        if (!width || !height) return;
+        requestAnimationFrame(() => {
+            const iframe = document.querySelector("iframe");
+            iframe.style.width = width;
+            iframe.style.height = height;
+        });
+    }
 });
 
 setInterval(() => {
