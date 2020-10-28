@@ -1,4 +1,8 @@
-// document.domain = "host.playground";
+function syncDocumentDomain() {
+    document.domain = "host.playground";
+    alert(`Parent document domain now:
+host.playground`);
+}
 
 window.addEventListener("message", ({ data, origin }) => {
     if (data.type === "message-to-parent") console.log("parent received", { data, origin });

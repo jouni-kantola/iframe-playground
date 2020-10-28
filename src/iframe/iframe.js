@@ -1,4 +1,8 @@
-// document.domain = "host.playground";
+function syncDocumentDomain() {
+    document.domain = "host.playground";
+    alert(`Child document domain now:
+host.playground`);
+}
 
 const { referrer } = document;
 console.log({ referrer });
