@@ -3,6 +3,10 @@
 const { referrer } = document;
 console.log({ referrer });
 
+window.addEventListener("message", ({ data, origin }) => {
+    if (data.type === "message-to-child") console.log("child received", { data, origin });
+});
+
 setInterval(() => {
     window.parent.postMessage(
         {
